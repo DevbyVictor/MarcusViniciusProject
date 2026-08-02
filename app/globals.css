@@ -40,6 +40,10 @@ section,
   min-width: 0;
 }
 
+main {
+  overflow: clip;
+}
+
 img,
 video,
 svg {
@@ -98,23 +102,13 @@ svg {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 44px;
+  min-height: 68px;
 }
 
-.brand-mark {
-  color: var(--orange);
-  font-size: 32px;
-  font-weight: 950;
-  line-height: 1;
-  letter-spacing: -0.08em;
-}
-
-.brand-copy {
-  font-size: 11px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
+.brand-logo {
+  display: block;
+  width: 132px;
+  height: auto;
 }
 
 .hero {
@@ -130,9 +124,9 @@ svg {
 .hero-grid {
   min-height: 675px;
   display: grid;
-  grid-template-columns: 0.92fr 1.08fr;
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
   align-items: center;
-  gap: 64px;
+  gap: clamp(36px, 4.5vw, 64px);
 }
 
 .hero-copy {
@@ -159,12 +153,13 @@ p {
 }
 
 h1 {
-  max-width: 720px;
+  max-width: 100%;
   margin-bottom: 24px;
-  font-size: clamp(48px, 7vw, 88px);
-  line-height: 0.92;
-  letter-spacing: -0.06em;
+  font-size: clamp(46px, 4.65vw, 70px);
+  line-height: 0.94;
+  letter-spacing: -0.055em;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 h1 strong,
@@ -189,6 +184,7 @@ h2 strong {
 }
 
 .hero-points span {
+  min-width: 0;
   padding: 10px 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
@@ -200,6 +196,7 @@ h2 strong {
 .primary-button,
 .outline-button,
 .ghost-button {
+  max-width: 100%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -211,6 +208,7 @@ h2 strong {
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-align: center;
   transition: transform 180ms ease, filter 180ms ease, background 180ms ease;
 }
 
@@ -244,16 +242,19 @@ h2 strong {
 }
 
 .hero-visual {
+  width: 100%;
+  max-width: 640px;
   height: 620px;
   position: relative;
   align-self: end;
+  justify-self: end;
 }
 
 .orange-glow {
-  width: 520px;
+  width: min(520px, 100%);
   height: 520px;
   position: absolute;
-  right: -120px;
+  right: 0;
   bottom: 20px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 106, 0, 0.58), transparent 68%);
@@ -279,7 +280,7 @@ h2 strong {
   display: flex;
   align-items: center;
   gap: 14px;
-  min-width: 340px;
+  width: min(340px, calc(100% - 24px));
   position: absolute;
   right: 0;
   bottom: 42px;
@@ -314,11 +315,15 @@ h2 strong {
 }
 
 .section-heading h2 {
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 12px;
   font-size: clamp(34px, 5vw, 58px);
   line-height: 0.98;
   letter-spacing: -0.05em;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .section-heading p {
@@ -331,7 +336,7 @@ h2 strong {
 
 .benefit-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -368,7 +373,7 @@ h2 strong {
 
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -399,16 +404,20 @@ h2 strong {
 
 .results-grid {
   display: grid;
-  grid-template-columns: 0.78fr 1.22fr;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
   align-items: center;
-  gap: 56px;
+  gap: clamp(36px, 4vw, 56px);
 }
 
 .results-copy h2 {
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 0.96;
+  max-width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+  font-size: clamp(38px, 4.15vw, 58px);
+  line-height: 0.98;
   letter-spacing: -0.05em;
   text-transform: uppercase;
+  text-wrap: balance;
 }
 
 .results-copy > p {
@@ -419,6 +428,7 @@ h2 strong {
 
 .stats {
   display: flex;
+  flex-wrap: wrap;
   gap: 28px;
   margin-top: 36px;
 }
@@ -429,7 +439,7 @@ h2 strong {
 }
 
 .stats strong {
-  font-size: 24px;
+  font-size: clamp(20px, 2vw, 24px);
 }
 
 .stats span {
@@ -440,11 +450,12 @@ h2 strong {
 
 .transformations {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
 .transformation-card {
+  min-width: 0;
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 18px;
@@ -475,6 +486,7 @@ h2 strong {
 .transformation-card strong,
 .transformation-card span {
   display: block;
+  overflow-wrap: anywhere;
 }
 
 .transformation-card span {
@@ -485,16 +497,17 @@ h2 strong {
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   align-items: stretch;
-  gap: 20px;
+  gap: 16px;
 }
 
 .pricing-card {
+  min-width: 0;
   position: relative;
   display: flex;
   min-height: 530px;
-  padding: 34px;
+  padding: 28px;
   flex-direction: column;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius);
@@ -534,8 +547,9 @@ h2 strong {
 
 .price {
   margin-top: 18px;
-  font-size: clamp(34px, 4vw, 48px);
+  font-size: clamp(30px, 2.6vw, 42px);
   letter-spacing: -0.05em;
+  overflow-wrap: anywhere;
 }
 
 .installment {
@@ -623,7 +637,7 @@ details p {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.62fr 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
   gap: 32px;
 }
@@ -681,15 +695,70 @@ footer {
 
 .footer-content {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 
-@media (max-width: 980px) {
-  .hero-grid,
-  .results-grid,
+.footer-logo {
+  display: block;
+  width: 104px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+.footer-legal {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  text-align: right;
+}
+
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.78fr);
+    gap: 32px;
+  }
+
+  h1 {
+    font-size: clamp(44px, 5.15vw, 56px);
+  }
+
+  .results-grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 32px;
+  }
+
+  .results-copy h2 {
+    font-size: clamp(38px, 4.35vw, 48px);
+  }
+
+  .benefit-grid,
+  .steps-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pricing-card.featured {
+    transform: none;
+  }
+
+  .about-photo {
+    display: none;
+  }
+
   .about-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.82fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-grid,
+  .results-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .hero {
@@ -700,31 +769,19 @@ footer {
     gap: 0;
   }
 
+  .hero-copy {
+    max-width: 680px;
+  }
+
   .hero-visual {
-    height: 520px;
+    height: 500px;
+    justify-self: center;
   }
 
-  .benefit-grid,
-  .steps-grid,
-  .pricing-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .results-copy h2 {
+    max-width: 100%;
   }
 
-  .pricing-card.featured {
-    transform: none;
-  }
-
-  .pricing-card:last-child {
-    grid-column: 1 / -1;
-  }
-
-  .about-photo {
-    display: none;
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 @media (max-width: 720px) {
@@ -741,8 +798,8 @@ footer {
     min-height: 72px;
   }
 
-  .brand-copy {
-    display: none;
+  .brand-logo {
+    width: 106px;
   }
 
   .ghost-button {
@@ -761,8 +818,8 @@ footer {
 
   h1 {
     max-width: 100%;
-    font-size: clamp(38px, 11.5vw, 52px);
-    line-height: 0.95;
+    font-size: clamp(36px, 10.6vw, 46px);
+    line-height: 0.97;
     letter-spacing: -0.05em;
   }
 
@@ -776,7 +833,7 @@ footer {
   }
 
   .hero-visual {
-    height: 340px;
+    height: 360px;
   }
 
   .orange-glow {
@@ -803,7 +860,7 @@ footer {
   .pricing-grid,
   .transformations,
   .about-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .pricing-card:last-child {
@@ -835,7 +892,7 @@ footer {
 
   .stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
   }
 
@@ -855,7 +912,19 @@ footer {
   }
 
   .footer-content {
+    align-items: flex-start;
     flex-direction: column;
+  }
+
+  .footer-legal {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .footer-legal span {
+    max-width: 58ch;
   }
 }
 

@@ -135,8 +135,11 @@ export default function Home() {
       <section className="hero" id="inicio">
         <header className="header shell">
           <a href="#inicio" className="brand" aria-label="MV Personal Trainer">
-            <span className="brand-mark">MV</span>
-            <span className="brand-copy">Personal Trainer</span>
+            <img
+              className="brand-logo"
+              src="/mv-personal-logo.png"
+              alt="MV Personal Trainer"
+            />
           </a>
 
           <a className="ghost-button" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
